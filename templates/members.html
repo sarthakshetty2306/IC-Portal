@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a href="/" class="btn btn-outline-info mb-3">⬅ Back to Home</a>
+
+<h2>Members</h2>
+
+{% if session.get('admin') %}
+<a href="/add_member" class="btn btn-success mb-2">Add Member</a>
+{% endif %}
+
+{% for m in members %}
+<div class="card-box">
+    <h5>{{ m.name }}</h5>
+    <p>{{ m.department }} | {{ m.role }} | {{ m.year }}</p>
+
+    {% if session.get('admin') %}
+    <a href="/delete_member/{{ m.id }}" class="btn btn-danger btn-sm">Delete</a>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% endblock %}
