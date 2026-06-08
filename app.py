@@ -1,8 +1,13 @@
+import os
 from flask import Flask, render_template, request, redirect, session, flash
 from flask_sqlalchemy import SQLAlchemy
+from whitenoise import WhiteNoise  # Added for production static file serving
 
 app = Flask(__name__)
 app.secret_key = "icclub123"
+
+# Wrap Flask's WSGI application with WhiteNoise to safely serve CSS/JS in production
+app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/', prefix='static/')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///club.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -88,12 +93,13 @@ def add_member():
         return redirect('/members')
 
     return render_template('add_member.html')
+
 # ---------------- REDIRECT ROUTE (ADD FIX) ----------------
 @app.route('/add')
 def add_redirect():
     return redirect('/add_member')
 
-# ✅ FIXED: DELETE MEMBER (WAS MISSING)
+# DELETE MEMBER
 @app.route('/delete_member/<int:id>')
 def delete_member(id):
     if not session.get('admin'):
@@ -179,12 +185,9 @@ def dashboard():
     return render_template('dashboard.html')
 
 # ---------------- RUN ----------------
-import os
-
 if __name__ == '__main__':
-    # 1. Read the dynamic port assigned by Railway, fallback to 5002 for local testing
+    # Read the dynamic port assigned by Railway, fallback to 5002 for local testing
     port = int(os.environ.get("PORT", 5002))
     
-    # 2. Bind to 0.0.0.0 so Railway can route public web traffic to your app
-    # (Turn debug to False when deploying, or leave it dynamic)
+    # Bind to 0.0.0.0 so Railway can route public web traffic to your app
     app.run(host="0.0.0.0", port=port, debug=False)
