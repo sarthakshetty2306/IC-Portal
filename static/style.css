@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #0b1220;
+    color: white;
+}
+
+/* ===== LAYOUT ===== */
+.portal-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: #0f172a;
+    padding: 20px;
+    position: fixed;
+    border-right: 1px solid #1e293b;
+    overflow-y: auto;
+}
+
+.sidebar .brand h4 {
+    color: #38bdf8;
+    margin-bottom: 0;
+}
+
+.sidebar small {
+    color: #94a3b8;
+}
+
+/* ===== NAV LINKS ===== */
+.sidebar a {
+    display: block;
+    padding: 10px;
+    margin: 6px 0;
+    color: #cbd5e1;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background: #1e293b;
+    color: white;
+}
+
+/* ACTIVE TAB */
+.sidebar a.active {
+    background: #1e293b;
+    border-left: 4px solid #38bdf8;
+    color: #38bdf8;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+    margin-left: 260px;
+    padding: 25px;
+    width: calc(100% - 260px);
+}
+
+/* ===== HERO SECTION ===== */
+.hero-box {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.hero-box h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.hero-box h4 {
+    color: #38bdf8;
+}
+
+/* ===== DASHBOARD CARDS ===== */
+.dashboard-card {
+    display: block;
+    padding: 25px;
+    background: #111827;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    transition: 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    background: #0f172a;
+    color: #38bdf8;
+}
+
+/* ===== CARDS ===== */
+.card-box {
+    background: #111827;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    background: #111827;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+}
+
+/* ===== HEADINGS ===== */
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    margin-right: 5px;
+}
