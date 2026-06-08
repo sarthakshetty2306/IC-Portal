@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a href="/" class="btn btn-outline-info mb-3">⬅ Back to Home</a>
+
+<h2>Updates</h2>
+
+{% if session.get('admin') %}
+<a href="/add_update" class="btn btn-success mb-2">Add Update</a>
+{% endif %}
+
+{% for u in updates %}
+<div class="card-box">
+    <h5>{{ u.title }}</h5>
+    <p>{{ u.content }}</p>
+
+    {% if session.get('admin') %}
+    <a href="/delete_update/{{ u.id }}" class="btn btn-danger btn-sm">Delete</a>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% endblock %}
