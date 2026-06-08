@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<div class="card-box">
+    <h4>Total Members: {{ members|length }}</h4>
+</div>
+
+<a href="/add" class="btn btn-success mt-3">+ Add Member</a>
+
+<div class="card-box mt-3">
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Dept</th>
+        <th>Role</th>
+        <th>Year</th>
+        <th>Action</th>
+    </tr>
+
+    {% for m in members %}
+    <tr>
+        <td>{{ m.name }}</td>
+        <td>{{ m.department }}</td>
+        <td>{{ m.role }}</td>
+        <td>{{ m.year }}</td>
+        <td>
+            <a href="/delete/{{ m.id }}" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+
+{% endblock %}
