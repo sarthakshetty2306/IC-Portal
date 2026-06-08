@@ -179,5 +179,12 @@ def dashboard():
     return render_template('dashboard.html')
 
 # ---------------- RUN ----------------
+import os
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5002)
+    # 1. Read the dynamic port assigned by Railway, fallback to 5002 for local testing
+    port = int(os.environ.get("PORT", 5002))
+    
+    # 2. Bind to 0.0.0.0 so Railway can route public web traffic to your app
+    # (Turn debug to False when deploying, or leave it dynamic)
+    app.run(host="0.0.0.0", port=port, debug=False)
